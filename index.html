@@ -1,0 +1,36 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Tracker</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        button { padding: 5px 10px; }
+    </style>
+</head>
+<body>
+    <h1>My Book Tracker</h1>
+    <input id="title" placeholder="Book Title">
+    <input id="author" placeholder="Author">
+    <input id="rating" placeholder="Rating (1-5)">
+    <button onclick="addBook()">Add Book</button>
+    <div id="books"></div>
+
+    <script>
+        const books = [];
+        function addBook() {
+            const title = document.getElementById("title").value;
+            const author = document.getElementById("author").value;
+            const rating = document.getElementById("rating").value;
+            books.push({ title, author, rating });
+            updateBookList();
+        }
+        function updateBookList() {
+            const booksDiv = document.getElementById("books");
+            booksDiv.innerHTML = books.map(book => 
+                `<p>${book.title} by ${book.author} | Rating: ${book.rating}/5</p>`
+            ).join("");
+        }
+    </script>
+</body>
+</html>
